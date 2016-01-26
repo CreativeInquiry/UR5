@@ -22,8 +22,8 @@ calibrationTest: This is going to be a great place to start. This file should se
 
 
 The following 2 folders contain various sketches: 
-* The 01 Creative apps are the Client, and 
-* The 02 Robot apps act as the Server. 
+* **The 01 Creative apps are the Client, and** 
+* **The 02 Robot apps act as the Server.** 
 
 The Client app is where the creative experience and UI exist and in turn pass that data to the Server app to convert, format and send that data to the robot. 
 
@@ -48,28 +48,21 @@ Note: The format of the text file is important… including the empty line at th
 
 ## 02 Robot (Server App)
 
-RobotApp: 
-Classes
-RobotApp: Loads and defines main libraries and instances for the Robot and Gripper. The Gripper we used was the Robotique Gripper. This code can be commented out if you’re not using the same. This class establishes the socket connections as well.
-Calibration: This class includes the GUI used for calibrating the TL, TR, BL, BR corners as well as the ability to save and load this points (savePts, loadPts) between sessions.
-Gripper: Sends/receives and converts data to/from the Gripper and this app.
-Robot: Sends/receives and converts data to/from the Robot and this app. 
-Note: Don’t forget to set your IP address in line 6 & 7 relative to your setup. ;)
-RobotFeedback: Manages the feedback from the robot including joint positions, velocities++, more of which are documented as comments in the code.
+
+* **RobotApp:** Loads and defines main libraries and instances for the Robot and Gripper. The Gripper we used was the Robotique Gripper. This code can be commented out if you’re not using the same. This class establishes the socket connections as well.
+* **Calibration:** This class includes the GUI used for calibrating the TL, TR, BL, BR corners as well as the ability to save and load this points (savePts, loadPts) between sessions.
+* **Gripper:** Sends/receives and converts data to/from the Gripper and this app.
+* **Robot:** Sends/receives and converts data to/from the Robot and this app. 
+ * *Note: Don’t forget to set your IP address in line 6 & 7 relative to your setup. ;)*
+* **RobotFeedback:** Manages the feedback from the robot including joint positions, velocities++, more of which are documented as comments in the code.
 RobotMessage: Sends data to the robot as a message
 SocketConnection: Client/server setup.
 URScript: Formats path data being sent to the robot into a URScript
 Utils: Gets IP address, handles data and unit conversions
 
 
-Ok! Always hold on to your red emergency cut off button on the console for the robot when running any apps and good luck!
+***Ok! Always hold on to your red emergency cut off button on the console for the robot when running any apps and good luck!***
 
-These files… technically belong to Autodesk… so you might want to use them as reference and create your own set from them. 
+*These files… technically belong to Autodesk… so you might want to use them as reference and create your own set from them.* 
 
-Please let me know if you have any questions. 
-
-Woohoo!
-Drew
-=======
-# UR5
 Code to control UR5
