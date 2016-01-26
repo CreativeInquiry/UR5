@@ -1,10 +1,12 @@
-#UR-5 + Processing
+#UR-5 + Processing/OF
 
 *Processing v.2 code for the UR-5: initially developed March 2014 at the Applied Research Lab in the Office of the CTO at Autodesk. By Maurice Conti, Stéphane Bersot, and Dr. Woohoo!*
 
 ---
 
-Notes written by Dr. Woohoo!:<br>
+#Processing 
+
+Notes written by Dr. Woohoo for the Processing v.2.2 code:<br>
 *Here’s the quick low-down on the files:*
 
 ##00 Tests
