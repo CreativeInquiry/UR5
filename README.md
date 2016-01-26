@@ -1,6 +1,11 @@
-Here’s the quick low-down on the files:
+#UR-5 + Processing
 
-#UR-5
+*Processing v.2 code for the UR-5: initially developed March 2014 at the Applied Research Lab in the Office of the CTO at Autodesk. By Maurice Conti, Stéphane Bersot, and Dr. Woohoo!*
+
+---
+
+Notes written by Dr. Woohoo!:<br>
+*Here’s the quick low-down on the files:*
 
 ##00 Tests
 
@@ -16,7 +21,11 @@ calibrationTest: This is going to be a great place to start. This file should se
 * **gethostipadudress**: This test script will be necessary for more complex applications when you need to dynamically define your IP address.
 
 
-The following 2 folders contain various sketches. The 01 Creative apps are the Client and the 02 Robot apps act as the Server. The Client app is where the creative experience and UI exist and in turn pass that data to the Server app to convert, format and send that data to the robot. 
+The following 2 folders contain various sketches: 
+* The 01 Creative apps are the Client, and 
+* The 02 Robot apps act as the Server. 
+
+The Client app is where the creative experience and UI exist and in turn pass that data to the Server app to convert, format and send that data to the robot. 
 
 To run, you’ll want to 
 turn on and go through the boot up process with the UR5
@@ -25,19 +34,19 @@ you’ll always want to open and run one of the Server app in 02 Robot first to 
 after the robot app is running without any errors, open and run one of the creative apps
 
 There are a few constraints that are nice to know about, most of which hopefully have been resolved with this code. Here’s a few from what I can recall:
-At a single time, you can send not more than 8,000 lines of code to the UR5 before it crashes. If it does crash, it requires a reboot.
-The Server app sends a set of path data to robot in batches, where each batch is sent after either a certain amount of time has past, after the robot stops moving or, in this case, after the robot stops moving for a certain amount of time. The robot isn’t smart enough to tell us when it has finished running the code we sent it so we have to monitor its movements, set a timer for when it’s stopped moving and check again to see if it’s still stopped. If it still isn’t moving, then we send it another batch of paths, which I refer to as brushstrokes. 
-There’s a limit to the throughput size of data you can send from the Client to Server app via the socket connection. To overcome this challenge, in more advanced apps with the potential to send tons of data in short bursts, I write the path data to a separate file for each burst and send the path and name of the file to the server app which adds that to a queue which is runs as soon as the UR5 is ready for the next batch.
+* **At a single time, you can send not more than 8,000 lines of code to the UR5 before it crashes.** If it does crash, it requires a reboot.
+* The Server app sends a set of path data to robot in batches, where each batch is sent after either a certain amount of time has past, after the robot stops moving or, in this case, after the robot stops moving for a certain amount of time. **The robot isn’t smart enough to tell us when it has finished running the code we sent it** so we have to monitor its movements, set a timer for when it’s stopped moving and check again to see if it’s still stopped. If it still isn’t moving, then we send it another batch of paths, which I refer to as brushstrokes. 
+* **There’s a limit to the throughput size of data you can send from the Client to Server app via the socket connection.** To overcome this challenge, in more advanced apps with the potential to send tons of data in short bursts, I write the path data to a separate file for each burst and send the path and name of the file to the server app which adds that to a queue which is runs as soon as the UR5 is ready for the next batch.
 
 
-## 01 Creative (client app)
-CreativeApp_PerpLines: (Remember to launch the 02 Robot/Processing/RobotApp 1st) This client app records the path you’re creating by clicking-n-dragging the cursor and draws perpendicular lines to it. Clicking on the Make Magic button sends the perp line data to the robot app via a socket connection. Please note the IO class is used for calibrating the TL, BR, BL and TR positions of the robot so that it knows the boundaries of the area to draw in. In this example, the GUI class does not include buttons to calibrate these positions, but later apps will.
-CreativeApp_Scotty:  (Remember to launch the 02 Robot/Processing/RobotApp 1st) This app imports coordinates from a text file, converts it and sends it to the robot app. The PathData class contains a list of the drawingFiles which are located in data/ folder.
+## 01 Creative (Client App)
+* **CreativeApp_PerpLines:** (Remember to launch the *02_Robot/Processing/RobotApp* first!) This client app records the path you’re creating by clicking-n-dragging the cursor and draws perpendicular lines to it. Clicking on the Make Magic button sends the perp line data to the robot app via a socket connection. Please note the IO class is used for calibrating the TL, BR, BL and TR positions of the robot so that it knows the boundaries of the area to draw in. In this example, the GUI class does not include buttons to calibrate these positions, but later apps will.
+* **CreativeApp_Scotty:**  (Remember to launch the *02_Robot/Processing/RobotApp* 1st) This app imports coordinates from a text file, converts it and sends it to the robot app. The PathData class contains a list of the drawingFiles which are located in data/ folder.
 The ExtendScripts for Adobe Illustrator folder contains an ExtendScript to convert and export simple line drawings to a compatible text file. 
 Note: The format of the text file is important… including the empty line at the end of the file.
-CreativeApp_Watercolor_multiplePoints: (Remember to launch the 02 Robot/Processing/RobotApp 1st)  
+* **CreativeApp_Watercolor_multiplePoints:** (Remember to launch the *02_Robot/Processing/RobotApp* first)  
 
-## 02 Robot (server app)
+## 02 Robot (Server App)
 
 RobotApp: 
 Classes
