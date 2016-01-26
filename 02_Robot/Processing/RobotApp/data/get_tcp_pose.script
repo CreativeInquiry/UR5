@@ -1,0 +1,7 @@
+def test():
+  socket_open("xx.xx.xx.xx", 30000)
+  global tcppose = p[0,0,0,0,0,0]
+  tcppose = get_actual_tcp_pose()
+  socket_send_string(tcppose)
+  socket_close()
+end
